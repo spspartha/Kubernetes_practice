@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginxenv
+spec:
+ containers:
+ - name: nginxenv
+   image: nginx
+   env:
+   - name: USER_NAME
+     value: name

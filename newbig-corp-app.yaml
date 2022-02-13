@@ -1,0 +1,179 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"v1","kind":"Pod","metadata":{"annotations":{},"name":"big-corp-app1","namespace":"default"},"spec":{"containers":[{"image":"busybox","name":"busybox1","volumeMounts":[{"mountPath":"/var/log","name":"varlog"}]}],"volumes":[{"emptyDir":{},"name":"varlog"}]}}
+  creationTimestamp: "2021-06-12T16:39:08Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:metadata:
+        f:annotations:
+          .: {}
+          f:kubectl.kubernetes.io/last-applied-configuration: {}
+      f:spec:
+        f:containers:
+          k:{"name":"busybox1"}:
+            .: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/var/log"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:terminationGracePeriodSeconds: {}
+        f:volumes:
+          .: {}
+          k:{"name":"varlog"}:
+            .: {}
+            f:emptyDir: {}
+            f:name: {}
+    manager: kubectl-client-side-apply
+    operation: Update
+    time: "2021-06-12T16:39:08Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:message: {}
+            f:reason: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.36.0.15"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2021-06-12T16:39:19Z"
+  name: big-corp-app1
+  namespace: default
+  resourceVersion: "346311"
+  uid: 52511941-549f-46c3-8b4b-0d60d2de8916
+spec:
+  containers:
+  - image: busybox
+    imagePullPolicy: Always
+    name: busybox1
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/log
+      name: varlog
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-cwv5v
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: cksnode2.example.com
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - emptyDir: {}
+    name: varlog
+  - name: default-token-cwv5v
+    secret:
+      defaultMode: 420
+      secretName: default-token-cwv5v
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2021-06-12T16:39:09Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2021-06-12T16:39:09Z"
+    message: 'containers with unready status: [busybox1]'
+    reason: ContainersNotReady
+    status: "False"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2021-06-12T16:39:09Z"
+    message: 'containers with unready status: [busybox1]'
+    reason: ContainersNotReady
+    status: "False"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2021-06-12T16:39:08Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://c1fb4d39cbfe4cf85b43e42e45b180ea77bd7a4b0461aa2d0f24738ce5f84420
+    image: busybox:latest
+    imageID: docker-pullable://busybox@sha256:930490f97e5b921535c153e0e7110d251134cc4b72bbb8133c6a5065cc68580d
+    lastState:
+      terminated:
+        containerID: docker://c1fb4d39cbfe4cf85b43e42e45b180ea77bd7a4b0461aa2d0f24738ce5f84420
+        exitCode: 0
+        finishedAt: "2021-06-12T16:39:24Z"
+        reason: Completed
+        startedAt: "2021-06-12T16:39:24Z"
+    name: busybox1
+    ready: false
+    restartCount: 1
+    started: false
+    state:
+      waiting:
+        message: back-off 10s restarting failed container=busybox1 pod=big-corp-app1_default(52511941-549f-46c3-8b4b-0d60d2de8916)
+        reason: CrashLoopBackOff
+  hostIP: 192.168.1.52
+  phase: Running
+  podIP: 10.36.0.15
+  podIPs:
+  - ip: 10.36.0.15
+  qosClass: BestEffort
+  startTime: "2021-06-12T16:39:09Z"

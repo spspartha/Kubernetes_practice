@@ -1,0 +1,16 @@
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: all-port
+  namespace: test-net
+spec:
+  podSelector:
+    matchLabels:
+     namespace: test-net
+  egress:
+  - {}
+  policyTypes:
+  - Ingress
+     ports:
+     - protocol: TCP
+       port: 80

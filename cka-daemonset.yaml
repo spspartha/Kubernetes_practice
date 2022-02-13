@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: cka-daemonset
+  namespace: kube-system
+  labels:
+    k8s-app: cka-daemonset
+spec:
+  selector:
+    matchLabels:
+      name: cka-daemonset
+  template:
+    metadata:
+      labels:
+        name: cka-daemonset
+    spec:
+      tolerations:
+      # this toleration is to have the daemonset runnable on master nodes
+      # remove it if your masters can't run pods
+      - key: node-role.kubernetes.io/master
+        operator: Exists
+        effect: NoSchedule
+      containers:
+      - name: cka-daemonset
+        image: nginx

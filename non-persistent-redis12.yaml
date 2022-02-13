@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: non-persistent-redis12
+spec:
+  volumes:
+    - name: app-data-cache-pv
+      persistentVolumeClaim:
+        claimName: app-cache-pv-claim
+  containers:
+    - name: non-persistent-redis12
+      image: redis
+      ports:
+      volumeMounts:
+        - mountPath: "/dataredis"
+          name: app-data-cache-pv

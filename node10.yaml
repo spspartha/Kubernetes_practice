@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+ name: nginx10-nodeselector
+ labels:
+  run: nginx
+spec:
+ containers:
+ - name: nginx10-nodeselector
+   image: nginx
+ nodeSelector:
+   disk: ssd

@@ -1,0 +1,163 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2021-06-19T11:29:39Z"
+  managedFields:
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        f:containers:
+          k:{"name":"big-corp-app"}:
+            .: {}
+            f:args: {}
+            f:image: {}
+            f:imagePullPolicy: {}
+            f:name: {}
+            f:resources: {}
+            f:terminationMessagePath: {}
+            f:terminationMessagePolicy: {}
+            f:volumeMounts:
+              .: {}
+              k:{"mountPath":"/var/log"}:
+                .: {}
+                f:mountPath: {}
+                f:name: {}
+        f:dnsPolicy: {}
+        f:enableServiceLinks: {}
+        f:restartPolicy: {}
+        f:schedulerName: {}
+        f:securityContext: {}
+        f:terminationGracePeriodSeconds: {}
+        f:volumes:
+          .: {}
+          k:{"name":"varlog"}:
+            .: {}
+            f:emptyDir: {}
+            f:name: {}
+    manager: kubectl-create
+    operation: Update
+    time: "2021-06-19T11:29:39Z"
+  - apiVersion: v1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:conditions:
+          k:{"type":"ContainersReady"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Initialized"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+          k:{"type":"Ready"}:
+            .: {}
+            f:lastProbeTime: {}
+            f:lastTransitionTime: {}
+            f:status: {}
+            f:type: {}
+        f:containerStatuses: {}
+        f:hostIP: {}
+        f:phase: {}
+        f:podIP: {}
+        f:podIPs:
+          .: {}
+          k:{"ip":"10.36.0.9"}:
+            .: {}
+            f:ip: {}
+        f:startTime: {}
+    manager: kubelet
+    operation: Update
+    time: "2021-06-19T11:29:52Z"
+  name: big-corp-app
+  namespace: default
+  resourceVersion: "765374"
+  uid: 5c4d1cf3-4fb3-4e33-a605-4d69d997a61f
+spec:
+  containers:
+  - args:
+    - /bin/sh
+    - -c
+    - "i=0; while true; do\n  echo \"$i: $(date)\" >> /var/log/1.log;\n  echo \"$(date)
+      INFO $i\" >> /var/log/2.log;\n  i=$((i+1));\n  sleep 1;\ndone      \n"
+    image: busybox
+    imagePullPolicy: Always
+    name: big-corp-app
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/log
+      name: varlog
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: default-token-cwv5v
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: cksnode2.example.com
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - emptyDir: {}
+    name: varlog
+  - name: default-token-cwv5v
+    secret:
+      defaultMode: 420
+      secretName: default-token-cwv5v
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2021-06-19T11:29:38Z"
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2021-06-19T11:29:51Z"
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2021-06-19T11:29:51Z"
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2021-06-19T11:29:39Z"
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://636f039f1694e1e2c905a9e9f45d6282751aeb2489248688f672e03d23d8ac58
+    image: busybox:latest
+    imageID: docker-pullable://busybox@sha256:930490f97e5b921535c153e0e7110d251134cc4b72bbb8133c6a5065cc68580d
+    lastState: {}
+    name: big-corp-app
+    ready: true
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2021-06-19T11:29:50Z"
+  hostIP: 192.168.1.52
+  phase: Running
+  podIP: 10.36.0.9
+  podIPs:
+  - ip: 10.36.0.9
+  qosClass: BestEffort
+  startTime: "2021-06-19T11:29:38Z"
